@@ -1,0 +1,14 @@
+{
+  "name": "assassin-ring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assassin.js",
+  "scripts": {
+    "test": "jasmine-node assassin.spec.js"
+  },
+  "author": "Harold Shinsato",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
