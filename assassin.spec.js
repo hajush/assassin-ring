@@ -1,27 +1,27 @@
-var assassin = require('./assassin');
+var assignTargets = require('./assassin');
 
 describe('Assassin Ring Targets', function () {
 
   it('Throws error with no arguments', function () {
-    expect(assassin.assignTargets).toThrow();
+    expect(assignTargets).toThrow();
   });
 
   it('Throws error for non array input', function () {
   	var f = function() {
-  		assassin.assignTargets("stuff");
+  		assignTargets("stuff");
   	}
     expect(f).toThrow();
   });
 
   it('Throws error for array less than 2', function () {
   	var f = function() {
-  		assassin.assignTargets(["One Person"]);
+  		assignTargets(["One Person"]);
   	}
     expect(f).toThrow();
   });
 
   it('For two element array, returns obvious assigments', function() {
-  	expect(assassin.assignTargets(["a", "b"])).toEqual(["b", "a"]);
+  	expect(assignTargets(["a", "b"])).toEqual(["b", "a"]);
   });
 
   var times = 1000;
@@ -30,7 +30,7 @@ describe('Assassin Ring Targets', function () {
   	var assassins = ["a", "b", "c"];
   	var targetTimes = {a: {b:0, c:0}, b: {a:0, c:0}, c: {a:0, b:0}};
   	for (var i = 0; i < times; i++) {
-	  	var targets = assassin.assignTargets(assassins);
+	  	var targets = assignTargets(assassins);
 	  	expect(targets.length).toEqual(assassins.length);
 	  	assassins.forEach(function(assassin, index) {
 	  		expect(assassin).not.toBe(targets[index]);
@@ -52,7 +52,7 @@ describe('Assassin Ring Targets', function () {
   		assassins.push("Assassin #" + i);
   	}
   	for (var i = 0; i < 5; i++) {
-	  	var targets = assassin.assignTargets(assassins);
+	  	var targets = assignTargets(assassins);
 	  	expect(targets.length).toEqual(assassins.length);
 	  	assassins.forEach(function(assassin, index) {
 	  		expect(assassin).not.toBe(targets[index]);
